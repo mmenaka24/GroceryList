@@ -1,22 +1,19 @@
 def main():
 
-    list = {}
+    item_counts = {}
 
     while True:
         try:
-            item = input()
+            item = input().strip()
         except EOFError:
-            sorted_list = sorted(list)
-            for entry in sorted_list:
-                print(f"{list[entry]} {entry}")
-            return
+            break
 
         itemFormatted = item.upper()
 
-        if itemFormatted in list:
-            list[itemFormatted] += 1
-        else:
-            list[itemFormatted] = 1
+        item_counts[itemFormatted] = item_counts.get(itemFormatted, 0) + 1
+
+    for entry in sorted(item_counts):
+        print(f"{item_counts[entry]} {entry}")
 
 
 main()
